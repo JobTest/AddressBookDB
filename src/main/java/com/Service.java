@@ -1,12 +1,12 @@
 package main.java.com;
 
-import main.java.com.dao.SortBy;
 import main.java.com.dao.UserRolesDao;
 import main.java.com.dao.UserRolesDaoI;
 import main.java.com.domain.User;
 import main.java.com.domain.UserRole;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -41,6 +41,11 @@ public class Service {
 
         /* Выведем всех студентов из базы данных */
 //        print( dao.getUserRoles() );
+//        List<UserRole> user_roles = dao.getUserRoles();
+        List<UserRole> user_roles = dao.findUserRolesBy("Ivanov-", 0, 100);
+        Collections.sort(user_roles, (u1, u2) -> u1.getAge().compareTo(u1.getAge()));
+//        Collections.sort(user_roles, (u1, u2) -> u1.getName().compareTo(u1.getName()));
+        print(user_roles);
 
         /* Выведем только 3-студента из базы данных */
 //        print( dao.getUserRoles(3) );
@@ -50,7 +55,7 @@ public class Service {
 
         /* Выведем найденных студентов из базы данных */
 //        print( dao.findUserRolesBy("Ivanov-", 51, 100) );
-        print( dao.findUserRolesBy("Ivanov-", 0, 100, SortBy.AGE) );
+//        print( dao.findUserRolesBy("Ivanov-", 0, 100, SortBy.AGE) );
 	}
 
 

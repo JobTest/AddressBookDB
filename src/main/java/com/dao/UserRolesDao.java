@@ -31,7 +31,8 @@ public class UserRolesDao implements UserRolesDaoI {
     public List<UserRole> getUserRoles() {
         try {
             session = DataFactory.getInstance().openSession();
-            user_roles = session.createCriteria(UserRole.class).list();
+            user_roles = session.createCriteria(UserRole.class)
+                    .list();
         } catch (ExceptionInInitializerError e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
